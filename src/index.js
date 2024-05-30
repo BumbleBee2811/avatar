@@ -55,38 +55,59 @@ const profileData = [
       { skillName: "Prod Release", emoji: "💪", color: "indigo" },
     ],
   },
-  {
-    avatar: {
-      photoName: "./images/suraj.jpg",
-      altText: "suraj.jpg",
-    },
-    intro: {
-      profileName: "Suraj Prasad Dash",
-      introduction:
-        "QA Automation Engineer. When not testing, I like to play cricket.",
-    },
-    skills: [
-      { skillName: "Automation Testing", emoji: "🍵", color: "pink" },
-      { skillName: "Java/Selenium", emoji: "⭐", color: "brown" },
-      { skillName: "Scrum", emoji: "💫", color: "violet" },
-      { skillName: "Prod Release", emoji: "💪", color: "indigo" },
-    ],
-  },
+  //   {
+  //     avatar: {
+  //       photoName: "./images/suraj.jpg",
+  //       altText: "suraj.jpg",
+  //     },
+  //     intro: {
+  //       profileName: "Suraj Prasad Dash",
+  //       introduction:
+  //         "QA Automation Engineer. When not testing, I like to play cricket.",
+  //     },
+  //     skills: [
+  //       { skillName: "Automation Testing", emoji: "🍵", color: "pink" },
+  //       { skillName: "Java/Selenium", emoji: "⭐", color: "brown" },
+  //       { skillName: "Scrum", emoji: "💫", color: "violet" },
+  //       { skillName: "Prod Release", emoji: "💪", color: "indigo" },
+  //     ],
+  //   },
 ];
 
 function App() {
   return (
-    <ul className="cards">
-      {profileData.map((profile) => (
-        <li className="card" key={profile.intro.profileName}>
-          <Avatar avatarObj={profile.avatar} />
-          <div className="data">
-            <Intro introObj={profile.intro} />
-            <SkillList skillListObj={profile.skills} />
-          </div>
-        </li>
-      ))}
-    </ul>
+    <div className="container">
+      <Header />
+      <Avatars />
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <header className="header">
+      <h1>Working Profile Details</h1>
+    </header>
+  );
+}
+
+function Avatars() {
+  return (
+    <main className="profiles">
+      <h2>Profiles</h2>
+      <ul className="cards">
+        {profileData.map((profile, index) => (
+          <li className="card" key={index}>
+            <Avatar avatarObj={profile.avatar} />
+            <div className="data">
+              <Intro introObj={profile.intro} />
+              <SkillList skillListObj={profile.skills} />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 }
 
@@ -125,6 +146,14 @@ function Skill(props) {
       <span>{props.skillObj.skillName}</span>
       <span>{props.skillObj.emoji}</span>
     </li>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <p>List of all the profiles on {new Date().toLocaleDateString()}</p>
+    </footer>
   );
 }
 
